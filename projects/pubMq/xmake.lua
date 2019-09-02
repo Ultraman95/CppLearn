@@ -1,3 +1,4 @@
+set_project("pubMq")
 
 -- add modes: debug and release 
 add_rules("mode.debug", "mode.release")

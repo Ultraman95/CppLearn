@@ -1,27 +1,21 @@
-set_project("subMq")
+set_project("rdKafka")
 
 -- add modes: debug and release 
 add_rules("mode.debug", "mode.release")
 
-add_defines("WIN32")
-
-add_requires("vcpkg::paho-mqtt","vcpkg::pthreads")
+add_requires("vcpkg::librdkafka")
 
 -- add target
-target("subMq")
+target("rdKafka")
+
     -- set kind
     set_kind("binary")
 
     -- add files
-    add_files("src/*.c") 
+    add_files("src/*.cpp") 
+	
+	add_packages("vcpkg::librdkafka")
 
-    add_packages("vcpkg::paho-mqtt","vcpkg::pthreads")
-
-	--xmake run,发现dll,但是vs不支持
-    --before_run(function (target)
-        --os.addenv("PATH", "E:/Program Files/vcpkg/installed/x64-windows/bin")
-		--os.addenv("PATH", "E:/Program Files/vcpkg/installed/x86-windows/bin")
-    --end)
 
 --
 -- FAQ
