@@ -1,17 +1,19 @@
-set_project("CppLearn")
+set_project("Base")
 
 -- add modes: debug and release 
 add_rules("mode.debug", "mode.release")
 
 -- add target
-target("CppLearn")
+target("Base")
 
     -- set kind
     set_kind("binary")
 
-    add_headerfiles("src/*.h")
+    add_headerfiles("src/*/*.h")
+	
     -- add files
-    add_files("src/*.cpp")
+    add_files("src/*/*.cpp")
+	add_files("src/main.cpp")
 
 
 
