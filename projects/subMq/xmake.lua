@@ -4,6 +4,8 @@ add_rules("mode.debug", "mode.release")
 
 add_defines("WIN32")
 
+add_requires("vcpkg::paho-mqtt","vcpkg::pthreads")
+
 -- add target
 target("subMq")
     -- set kind
@@ -12,14 +14,10 @@ target("subMq")
     -- add files
     add_files("src/*.c") 
 
-    on_load(function (target)
-	    import("lib.detect.find_package")
-	    target:add(find_package("paho-mqtt"))
-        target:add(find_package("pthreads"))
-    end)
+    add_packages("vcpkg::paho-mqtt","vcpkg::pthreads")
 
     before_run(function (target)
-        os.addenv("PATH", "C:/Program Files/cmder/tools/vcpkg/installed/x64-windows/debug/bin")
+        os.addenv("PATH", "E:/Program Files/vcpkg/installed/x64-windows/bin")
     end)
 
 --

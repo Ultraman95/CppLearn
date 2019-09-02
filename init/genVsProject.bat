@@ -1,1 +1,1 @@
-xmake project -k vs2017 -m "debug,release" -a "x86" 
+xmake project -k vsxmake -m "debug,release" -a "x86,x64" 

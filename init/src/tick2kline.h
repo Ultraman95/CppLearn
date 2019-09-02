@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <vector>
+#include <string>
 #include "utils.h"
 
 #define max(a,b)    (((a) > (b)) ? (a) : (b))

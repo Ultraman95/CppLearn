@@ -83,7 +83,11 @@ void KlineContainer::InsertTick(std::vector<KlineField> *kline, TickField &tick,
                         //Error---Ê±¼ä»ØÍË
                     }
                 }
-            }
+			}
+			else {
+				sendedField = new KlineField();
+			}
+
 
             sendedField->Average = sendField.Average;
             sendedField->Close = sendField.Close;

@@ -4,6 +4,8 @@ add_rules("mode.debug", "mode.release")
 
 add_defines("WIN32")
 
+add_requires("vcpkg::paho-mqtt","vcpkg::pthreads")
+
 -- add target
 target("pubMq")
     -- set kind
@@ -12,17 +14,10 @@ target("pubMq")
     -- add files
     add_files("src/*.c") 
 	
+	add_packages("vcpkg::paho-mqtt","vcpkg::pthreads")
 	
-    on_load(function (target)
-	    import("lib.detect.find_package")
-	    target:add(find_package("paho-mqtt"))
-        target:add(find_package("pthreads"))
-    end)
-
-	add_links("pthreads")
-	add_links("paho-mqtt3as")
-    before_run(function (target)
-        os.addenv("PATH", "C:/Program Files/cmder/tools/vcpkg/installed/x64-windows/bin")
+	before_run(function (target)
+        os.addenv("PATH", "E:/Program Files/vcpkg/installed/x64-windows/bin")
     end)
 
 --

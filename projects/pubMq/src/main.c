@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "MQTTClient.h"
+#include "paho-mqtt/MQTTClient.h"
 #include <pthread.h>
 #if defined(WIN32) || defined(WIN64)
 #include <windows.h>
