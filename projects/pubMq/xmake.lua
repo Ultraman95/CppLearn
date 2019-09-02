@@ -16,7 +16,9 @@ target("pubMq")
 	
 	add_packages("vcpkg::paho-mqtt","vcpkg::pthreads")
 	
-	add_runenvs("PATH", "E:/Program Files/vcpkg/installed/x64-windows/bin", "E:/Program Files/vcpkg/installed/x86-windows/bin")
+	
+	--如果没有将vcpkg/installed的bin加入环境变量，则需要使用下面语句动态加入
+	--add_runenvs("PATH", "E:/Program Files/vcpkg/installed/x64-windows/bin", "E:/Program Files/vcpkg/installed/x86-windows/bin")
 	
 	
 	
