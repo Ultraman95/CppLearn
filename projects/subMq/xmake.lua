@@ -18,6 +18,7 @@ target("subMq")
 
     before_run(function (target)
         os.addenv("PATH", "E:/Program Files/vcpkg/installed/x64-windows/bin")
+		os.addenv("PATH", "E:/Program Files/vcpkg/installed/x86-windows/bin")
     end)
 
 --
