@@ -3,6 +3,8 @@ set_project("Base")
 -- add modes: debug and release 
 add_rules("mode.debug", "mode.release")
 
+add_requires("vcpkg::gtest","vcpkg::cli11")
+
 -- add target
 target("Base")
 
@@ -14,6 +16,10 @@ target("Base")
     -- add files
     add_files("src/*/*.cpp")
 	add_files("src/main.cpp")
+	
+	add_files("test/*/*.cpp")
+	
+	add_packages("vcpkg::gtest","vcpkg::cli11")
 
 
 

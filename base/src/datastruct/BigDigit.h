@@ -1,5 +1,4 @@
-#ifndef __BIG_DIGIT_H
-#define __BIG_DIGIT_H
+#pragma once
 
 #ifdef _WIN32
 typedef __int64 LONGINT;
@@ -74,4 +73,3 @@ private:
 	int m_sign;			
 };
 
-#endif

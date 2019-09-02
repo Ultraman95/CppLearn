@@ -1,10 +1,9 @@
-#ifndef UTILS_H_
-#define UTILS_H_
+#pragma once
 
 #ifdef _WIN32
 #include <winsock2.h>
 #include <time.h>
-#include<windows.h>
+#include <windows.h>
 #else
 #include <sys/time.h>
 #include <unistd.h>
@@ -22,5 +21,4 @@ unsigned long long GetCurrentTimeMsec();
 
 minIndex GetIndexMinute(unsigned long long timeSec);
 
-#endif
 
