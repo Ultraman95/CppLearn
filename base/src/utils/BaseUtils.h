@@ -21,6 +21,5 @@ unsigned long long GetCurrentTimeMsec();
 
 minIndex GetIndexMinute(unsigned long long timeSec);
 
-//void customSprintf(int width, int decimals, double value);
 
 

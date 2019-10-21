@@ -10,7 +10,7 @@
 // When the process() method is called, this class read from 
 // stdin and call callbacks for each unit, input, connection, and
 // value.
-class input_parser {
+class Input_parser {
 public:
     /// Register the callback for each UNIT in the input file.
     /// The first parameter is the "unit-name", the second parameter is the "unit-type".
