@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef _WIN32
+#ifdef _WIN64
 typedef __int64 LONGINT;
 #else
 typedef long long LONGINT;

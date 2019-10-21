@@ -10,6 +10,10 @@ target("Base")
 
     -- set kind
     set_kind("binary")
+	
+	add_includedirs("src/datastruct/")
+	add_includedirs("src/platform/")
+	add_includedirs("src/utils/")
 
     add_headerfiles("src/*/*.h")
 	

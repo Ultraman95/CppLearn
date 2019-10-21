@@ -4,7 +4,7 @@
 #include <string.h>
 #include <math.h>
 
-#ifdef _WIN32
+#ifdef _WIN64
 #define stoi64(x) _atoi64(x)
 #else
 #define stoi64(x) strtoll(x,NULL,10)
@@ -14,7 +14,7 @@ const LONGINT _power = (LONGINT)pow((double)10, PREC_DEPTH);
 
 void tostr(char *s, LONGINT num, LONGINT frac)
 {
-#ifdef _WIN32
+#ifdef _WIN64
 	sprintf(s, "%I64d%0*I64d", num, PREC_DEPTH, frac);
 #else
 	sprintf(s, "%lld%0*lld", num, PREC_DEPTH, frac);
@@ -178,7 +178,7 @@ char *CFloat::toString(char *buf) const
 	}
 	if (m_fraction == 0)
 	{
-#ifdef _WIN32
+#ifdef _WIN64
 		sprintf(buf, "%s%I64d", ss, m_integer);
 #else
 		sprintf(buf, "%s%lld", ss, m_integer);
@@ -186,7 +186,7 @@ char *CFloat::toString(char *buf) const
 	}
 	else
 	{
-#ifdef _WIN32
+#ifdef _WIN64
 		sprintf(buf, "%s%I64d.%0*I64d", ss, m_integer, PREC_DEPTH, m_fraction);
 #else
 		sprintf(buf, "%s%lld.%0*lld", ss, m_integer, PREC_DEPTH, m_fraction);

@@ -2,7 +2,7 @@
 
 unsigned long long GetCurrentTimeMsec()
 {
-#ifdef _WIN32
+#ifdef _WIN64
     struct timeval tv;
     time_t clock;
     struct tm tm;
@@ -45,5 +45,17 @@ minIndex GetIndexMinute(unsigned long long timeSec) {
 }
 
 
+void sleep(int milliseconds) {
+#ifdef _WIN64
+	Sleep(milliseconds);
+#else
+	usleep(milliseconds);
+#endif
+}
 
+void printCV() {
+#ifdef _MSC_VER
+	std::cout << "Window MSC_VER :" << _MSC_VER << std::endl;
+#endif
+}
 
