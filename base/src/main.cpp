@@ -26,6 +26,7 @@ int main(int argc, char** argv)
 {
 	//CLI::App app;
 	//CLI11_PARSE(app, argc, argv);
+	//customSprintf(12, 8, 2.31000045067);
 
 	//GoogleTest
 	testing::InitGoogleTest(&argc, argv);
@@ -51,7 +52,7 @@ void test() {
 }
 
 /**
- * ²âÊÔRAII£¬±ØÐëÊÇÖ¸Õë±äÁ¿
+ * RAIIèµ„æºé‡Šæ”¾
  */
 void testRAII() {
 	CFloat* x = new CFloat("2.33333");
@@ -62,13 +63,38 @@ void testRAII() {
 
 void testWriteFile() {
 	const char* dir = "../../data\\tick\\";  
-	int a = MKDIR(dir);		//×ÓÄ¿Â¼ÎÞ·¨×Ô¶¯´´½¨
+	int a = MKDIR(dir);		//å­ç›®å½•æ— æ³•è‡ªåŠ¨åˆ›å»º
 	const char* cc = "../../tt.csv";
 	FILE *file = fopen(cc, "a+");
 	if (file == NULL)
 	{
-		//fopen,a+»á×Ô¶¯´´½¨ÎÄ¼þ£¬µ«²»»á×Ô¶¯´´½¨Ä¿Â¼
+		//fopen,a+ä¼šè‡ªåŠ¨åˆ›å»ºæ–‡ä»¶ï¼Œä½†ä¸ä¼šè‡ªåŠ¨åˆ›å»ºç›®å½•
 	}
+}
+
+void testIOStream(){
+	/*std::string inputStr;
+    while (std::cin >> inputStr)
+    {
+        if (inputStr != "*")
+        {
+            std::string cpStr = "c++";
+            char a[3];
+            a[0] = 'a';
+            a[1] = 'b';
+            a[2] = '\0';
+            char *b = "ab";     
+            printf("a is %s , b is %s\n", a, b);
+            printf("c++ string is \n", cpStr.c_str());
+            std::cout << inputStr << std::endl;
+        }else{
+            printf("Exit (yes-0/no-1) :");
+            int t = std::cin.get();
+            if(t == 0){
+                return 0;
+            }
+        }
+    }*/
 }
 
 

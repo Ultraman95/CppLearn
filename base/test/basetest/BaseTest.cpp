@@ -25,9 +25,9 @@ TEST(FooTest, HandleNoneZeroInput)
 
 TEST(IsAbsTest, HandlerTrueReturn)
 {
-	ASSERT_FALSE(Abs(1) == 1) << "Abs(1)=1";  //ASSERT_TRUEÆÚ´ý½á¹ûÊÇtrue,operator<<Êä³öÒ»Ð©×Ô¶¨ÒåµÄÐÅÏ¢
+	ASSERT_FALSE(Abs(1) == 1) << "Abs(1)=1";  //ASSERT_TRUEæœŸå¾…ç»“æžœæ˜¯true,operator<<è¾“å‡ºä¸€äº›è‡ªå®šä¹‰çš„ä¿¡æ¯
 	ASSERT_TRUE(Abs(-1) == 1) << "Abs(-1)=1";
-	ASSERT_FALSE(Abs(-2) == -2);  //ÆÚ´ý½á¹ûÊÇfalse
+	ASSERT_FALSE(Abs(-2) == -2);   //æœŸå¾…ç»“æžœæ˜¯false
 	ASSERT_EQ(Abs(1), Abs(-1));
 	ASSERT_NE(Abs(-1), 0);
 	ASSERT_LT(Abs(-1), 2);

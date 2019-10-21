@@ -44,5 +44,13 @@ minIndex GetIndexMinute(unsigned long long timeSec) {
     return mIndex;
 }
 
+/*
+void customSprintf(int width, int decimals, double value) {
+	char tmp[100];
+	sprintf(tmp, "%*.*lf", width, decimals, value);
+	//return tmp;
+}
+*/
+
 
 
