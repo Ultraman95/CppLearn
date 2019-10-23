@@ -1,6 +1,4 @@
-#include <iostream>
-#include <stdio.h>
-
+#include "platform.h"
 #include "BigDigit.h"
 #include "BaseUtils.h"
 #include "gtest/gtest.h"
@@ -11,17 +9,16 @@ void testIoPut();
 void googleTest(int argc, char** argv);
 
 
-using namespace std;
-
 int main(int argc, char** argv)
 {
 	printCV();
+	test();
 	return 0;
 }
 
 
 void test() {
-	testRAII();
+	//testRAII();
 }
 
 /**
@@ -34,12 +31,12 @@ void testRAII() {
 }
 
 void testIoPut(){
-	std::string inputStr;
-    while (std::cin >> inputStr)
+	string inputStr;
+    while (cin >> inputStr)
     {
         if (inputStr != "*")
         {
-            std::string cpStr = "c++";
+            string cpStr = "c++";
             char a[3];
             a[0] = 'a';
             a[1] = 'b';
@@ -47,7 +44,7 @@ void testIoPut(){
             char *b = "ab";     
             printf("a is %s , b is %s\n", a, b);
             printf("c++ string is \n", cpStr.c_str());
-            std::cout << inputStr << std::endl;
+            cout << inputStr << endl;
         }else{
 			return;
         }

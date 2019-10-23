@@ -1,4 +1,7 @@
-#ifdef _WIN64 //x64????_WIN32,_WIN64  x86?????_WIN32
+
+#pragma once
+
+#ifdef _WIN64 //x64支持_WIN32,_WIN64  x86只支持WIN32
 #include <winsock2.h>
 #include <time.h>
 #include <windows.h>
@@ -8,3 +11,10 @@
 #endif
 #include <chrono>
 #include <iostream>
+#include <string>
+#include "stdio.h"
+
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;

@@ -23,17 +23,24 @@ private:
 };
 
 struct minIndex {
-    char * day;
+    string day;
     int index;
 };
 
-unsigned long long GetCurrentTimeMsec();
+//获取当前时间的毫秒数
+unsigned long long getCurrentTimeMsec();
 
-minIndex GetIndexMinute(unsigned long long timeSec);
+//单位是秒
+void getIndexMinute(unsigned long long timeSec,minIndex &mIndex);
 
 //单位是毫秒
 void sleep(int milliseconds);
 
+//打印编译器的版本
 void printCV();
+
+string intToString(int v);
+
+
 
 

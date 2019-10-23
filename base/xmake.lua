@@ -5,6 +5,8 @@ add_rules("mode.debug", "mode.release")
 
 add_requires("vcpkg::gtest","vcpkg::cli11")
 
+-- add_defines("")
+
 -- add target
 target("Base")
 
@@ -15,15 +17,40 @@ target("Base")
 	add_includedirs("src/platform/")
 	add_includedirs("src/utils/")
 
-    add_headerfiles("src/*/*.h")
+    add_headerfiles("src/**/*.h")
+	add_headerfiles("src/platform/*.h")
+	add_headerfiles("src/datastruct/*.h")
+	add_headerfiles("src/utils/*.h")
+	add_headerfiles("src/utils/cli/*.h")
+	add_headerfiles("src/utils/parser/*.hpp")
+	if is_os("linux") then
+		add_headerfiles("src/utils/redis/*.h")
+	end
 	
     -- add files
-    add_files("src/*/*.cpp")
+    add_files("src/datastruct/*.cpp")
+	add_files("src/utils/*.cpp")
+	add_files("src/utils/cli/*.cpp")
+	
+	if is_os("linux") then
+		add_files("src/utils/redis/*.cpp")
+	end
 	add_files("src/main.cpp")
 	
 	add_files("test/*/*.cpp")
-	
+
+	if is_os("windows") then
+		add_linkdirs("./libs/win")
+		--add_links("hiredis")
+	elseif is_os("linux") then
+		add_linkdirs("./libs/linux")
+	end
 	add_packages("vcpkg::gtest","vcpkg::cli11")
+
+	--xmake run时，自动加载所需dll动态库
+    before_run(function (target)
+        os.addenv("PATH", "./dlls")
+    end)
 
 
 

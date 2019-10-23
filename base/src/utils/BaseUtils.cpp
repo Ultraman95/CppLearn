@@ -1,6 +1,6 @@
 #include "BaseUtils.h"
 
-unsigned long long GetCurrentTimeMsec()
+unsigned long long getCurrentTimeMsec()
 {
 #ifdef _WIN64
     struct timeval tv;
@@ -28,7 +28,7 @@ unsigned long long GetCurrentTimeMsec()
 }
 
 
-minIndex GetIndexMinute(unsigned long long timeSec) {
+void getIndexMinute(unsigned long long timeSec,minIndex &mIndex) {
     time_t tick = (time_t)timeSec;
     struct tm *tx;
     tx = localtime(&tick);
@@ -38,10 +38,16 @@ minIndex GetIndexMinute(unsigned long long timeSec) {
     int minute = tx->tm_min;
     int hour = tx->tm_hour;
     int index = hour * 60 + minute;
-    minIndex mIndex;
-    mIndex.day = dayStr;
-    mIndex.index = index;
-    return mIndex;
+	mIndex.day = dayStr;
+	mIndex.index = index;
+}
+
+string intToString(int v)
+{
+    char buf[32] = {0};
+    snprintf(buf, sizeof(buf), "%u", v);
+    string str = buf;
+    return str;
 }
 
 
@@ -55,7 +61,7 @@ void sleep(int milliseconds) {
 
 void printCV() {
 #ifdef _MSC_VER
-	std::cout << "Window MSC_VER :" << _MSC_VER << std::endl;
+	cout << "Window MSC_VER :" << _MSC_VER << endl;
 #endif
 }
 
