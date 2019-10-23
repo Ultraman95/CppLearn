@@ -42,27 +42,21 @@ void getSecIndexMin(unsigned long long timeSec,minIndex &mIndex) {
 	mIndex.day = dayStr;
 	mIndex.index = index;
 }
-
-
+#ifdef _WIN64
 double getStartMicroTime(LARGE_INTEGER &cpuFreq){
-    #ifdef _WIN64
-        LARGE_INTEGER startTime;
-        double rumTime=0.0;
-        QueryPerformanceFrequency(&cpuFreq);
-        QueryPerformanceCounter(&startTime);
-        return startTime.QuadPart;
-    #endif
-    return 0.0;
+    LARGE_INTEGER startTime;
+    double rumTime=0.0;
+    QueryPerformanceFrequency(&cpuFreq);
+    QueryPerformanceCounter(&startTime);
+    return startTime.QuadPart;
 }
 
 double getEndMicroTime(){
-    #ifdef _WIN64
-        LARGE_INTEGER endTime;
-        QueryPerformanceCounter(&endTime);
-        return endTime.QuadPart;
-    #endif
-    return 0.0;
+    LARGE_INTEGER endTime;
+    QueryPerformanceCounter(&endTime);
+    return endTime.QuadPart;
 }
+#endif
 
 
 void sleep(int milliseconds) {
