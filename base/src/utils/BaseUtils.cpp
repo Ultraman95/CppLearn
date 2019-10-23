@@ -1,13 +1,14 @@
 #include "BaseUtils.h"
 
-unsigned long long getCurrentTimeMsec()
+//↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓时间相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+
+unsigned long long getCurrentMilliTime()
 {
 #ifdef _WIN64
     struct timeval tv;
     time_t clock;
     struct tm tm;
     SYSTEMTIME wtm;
-
     GetLocalTime(&wtm);
     tm.tm_year = wtm.wYear - 1900;
     tm.tm_mon = wtm.wMonth - 1;
@@ -28,7 +29,7 @@ unsigned long long getCurrentTimeMsec()
 }
 
 
-void getIndexMinute(unsigned long long timeSec,minIndex &mIndex) {
+void getSecIndexMin(unsigned long long timeSec,minIndex &mIndex) {
     time_t tick = (time_t)timeSec;
     struct tm *tx;
     tx = localtime(&tick);
@@ -42,12 +43,25 @@ void getIndexMinute(unsigned long long timeSec,minIndex &mIndex) {
 	mIndex.index = index;
 }
 
-string intToString(int v)
-{
-    char buf[32] = {0};
-    snprintf(buf, sizeof(buf), "%u", v);
-    string str = buf;
-    return str;
+
+double getStartMicroTime(LARGE_INTEGER &cpuFreq){
+    #ifdef _WIN64
+        LARGE_INTEGER startTime;
+        double rumTime=0.0;
+        QueryPerformanceFrequency(&cpuFreq);
+        QueryPerformanceCounter(&startTime);
+        return startTime.QuadPart;
+    #endif
+    return 0.0;
+}
+
+double getEndMicroTime(){
+    #ifdef _WIN64
+        LARGE_INTEGER endTime;
+        QueryPerformanceCounter(&endTime);
+        return endTime.QuadPart;
+    #endif
+    return 0.0;
 }
 
 
@@ -59,9 +73,32 @@ void sleep(int milliseconds) {
 #endif
 }
 
+//↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑时间相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+
+
+//↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓String相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+
+
+string intToString(int v)
+{
+    char buf[32] = {0};
+    snprintf(buf, sizeof(buf), "%u", v);
+    string str = buf;
+    return str;
+}
+
+
+//↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑String相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+
+//↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓一般相关↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+
 void printCV() {
 #ifdef _MSC_VER
 	cout << "Window MSC_VER :" << _MSC_VER << endl;
 #endif
 }
 
+
+//↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑一般相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑

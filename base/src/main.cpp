@@ -6,6 +6,7 @@
 void test();
 void testRAII();
 void testIoPut();
+void testDeltaUs();
 void googleTest(int argc, char** argv);
 
 
@@ -19,6 +20,7 @@ int main(int argc, char** argv)
 
 void test() {
 	//testRAII();
+    //testDeltaUs();
 }
 
 /**
@@ -49,6 +51,15 @@ void testIoPut(){
 			return;
         }
     }
+}
+
+void testDeltaUs(){
+    LARGE_INTEGER cpuFreq;
+    double startUs = getStartMicroTime(cpuFreq);
+    Sleep(1);
+    double endUs = getEndMicroTime();
+    double deltaUs = (((endUs - startUs) * 1000.0f) / cpuFreq.QuadPart);
+    cout << deltaUs*1000 << " us" << endl;
 }
 
 void googleTest(int argc, char** argv){

@@ -13,6 +13,7 @@
 #include <iostream>
 #include <string>
 #include "stdio.h"
+#include <cmath>
 
 using std::cin;
 using std::cout;
