@@ -1,5 +1,7 @@
 #pragma once
 
+//Window环境下无法使用
+
 #include <vector>
 #include "hiredis.h"
 #include <cstring>
