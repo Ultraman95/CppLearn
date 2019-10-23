@@ -97,6 +97,8 @@ string intToString(int v)
 void printCV() {
 #ifdef _MSC_VER
 	cout << "Window MSC_VER :" << _MSC_VER << endl;
+#else
+    cout << "Linux Gcc" << endl;
 #endif
 }
 
