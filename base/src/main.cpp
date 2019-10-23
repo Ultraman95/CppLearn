@@ -7,7 +7,7 @@ void test();
 void testRAII();
 void testIoPut();
 #ifdef _WIN64
-void testDeltaUs();
+//void testDeltaUs();
 #endif
 void googleTest(int argc, char** argv);
 
@@ -15,7 +15,7 @@ void googleTest(int argc, char** argv);
 int main(int argc, char** argv)
 {
 	printCV();
-	test();
+    csleep(300);
 	return 0;
 }
 
@@ -55,14 +55,14 @@ void testIoPut(){
 }
 
 #ifdef _WIN64
-void testDeltaUs(){
+/*void testDeltaUs(){
     LARGE_INTEGER cpuFreq;
     double startUs = getStartMicroTime(cpuFreq);
     Sleep(1);
     double endUs = getEndMicroTime();
     double deltaUs = (((endUs - startUs) * 1000.0f) / cpuFreq.QuadPart);
     cout << deltaUs*1000 << " us" << endl;
-}
+}*/
 #endif
 
 void googleTest(int argc, char** argv){

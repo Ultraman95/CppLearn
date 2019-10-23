@@ -37,15 +37,15 @@ unsigned long long getCurrentMilliTime();
 //获取微秒差
 
 #ifdef _WIN64
-double getStartMicroTime(LARGE_INTEGER &cpuFreq);
-double getEndMicroTime();
+//double getStartMicroTime(LARGE_INTEGER &cpuFreq);
+//double getEndMicroTime();
 #endif
 
 //单位是秒，计算这一秒在一天的哪一分钟里
 void getSecIndexMin(unsigned long long timeSec,minIndex &mIndex);
 
 //单位是毫秒
-void sleep(int milliseconds);
+void csleep(int milliseconds);
 
 
 
