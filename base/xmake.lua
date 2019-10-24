@@ -2,6 +2,7 @@ set_project("Base")
 
 -- add modes: debug and release 
 add_rules("mode.debug", "mode.release")
+set_languages("cxx11")
 
 add_requires("vcpkg::gtest","vcpkg::cli11")
 
