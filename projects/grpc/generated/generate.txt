@@ -1,0 +1,4 @@
+- generate files
+protoc.exe -I . --grpc_out=./ --plugin=protoc-gen-grpc=./grpc_cpp_plugin.exe hello.proto
+protoc.exe -I . --cpp_out=./ hello.proto	
+
