@@ -44,7 +44,7 @@ void getSecIndexMin(unsigned long long timeSec,minIndex &mIndex) {
 }
 
 #ifdef _WIN64
-/*double getStartMicroTime(LARGE_INTEGER &cpuFreq){
+double getStartMicroTime(LARGE_INTEGER &cpuFreq){
     LARGE_INTEGER startTime;
     double rumTime=0.0;
     QueryPerformanceFrequency(&cpuFreq);
@@ -56,17 +56,15 @@ double getEndMicroTime(){
     LARGE_INTEGER endTime;
     QueryPerformanceCounter(&endTime);
     return endTime.QuadPart;
-}*/
+}
 #endif
 
 
 void csleep(int milliseconds) {
 #ifdef _WIN64
 	Sleep(milliseconds);
-    cout << "window sleep" << endl;
 #else
 	usleep(milliseconds);
-    cout << "linux sleep" << endl;
 #endif
 }
 

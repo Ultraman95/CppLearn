@@ -42,10 +42,10 @@ target("Base")
 
 	if is_os("windows") then
 		add_linkdirs("./libs/win")
-		--add_links("hiredis")
 	elseif is_os("linux") then
 		add_linkdirs("./libs/linux")
 		add_links("hiredis")
+		add_links("pthread")	--gtest需要用到pthread
 	end
 	add_packages("vcpkg::gtest","vcpkg::cli11")
 
