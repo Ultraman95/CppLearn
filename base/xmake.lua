@@ -14,24 +14,46 @@ target("Base")
     -- set kind
     set_kind("binary")
 	
+	--add_includedirs("src/basetest/")
+	--add_includedirs("src/datastruct/")
+	--add_includedirs("src/platform/")
+	--add_includedirs("src/utils/")
+
+    --add_headerfiles("src/**/*.h")
+	--add_headerfiles("src/basetest/*.h")
+	--add_headerfiles("src/platform/*.h")
+	--add_headerfiles("src/datastruct/*.h")
+	--add_headerfiles("src/utils/*.h")
+	--add_headerfiles("src/utils/cli/*.h")
+	--add_headerfiles("src/utils/parser/*.hpp")	--hpp加在这儿
+	--if is_os("linux") then
+		--add_headerfiles("src/utils/redis/*.h")
+	--end
+
 	add_includedirs("src/basetest/")
 	add_includedirs("src/datastruct/")
 	add_includedirs("src/platform/")
 	add_includedirs("src/utils/")
+	add_includedirs("src/utils/cli/")
+	add_includedirs("src/utils/parser/")
+	if is_os("linux") then
+		add_includedirs("src/utils/redis/")
+	end
 
     add_headerfiles("src/**/*.h")
-	add_headerfiles("src/basetest/*.h")
-	add_headerfiles("src/platform/*.h")
-	add_headerfiles("src/datastruct/*.h")
-	add_headerfiles("src/utils/*.h")
-	add_headerfiles("src/utils/cli/*.h")
-	add_headerfiles("src/utils/parser/*.hpp")	--hpp加在这儿
-	if is_os("linux") then
-		add_headerfiles("src/utils/redis/*.h")
-	end
+	--add_headerfiles("src/basetest/*.h")
+	--add_headerfiles("src/platform/*.h")
+	--add_headerfiles("src/datastruct/*.h")
+	--add_headerfiles("src/utils/*.h")
+	--add_headerfiles("src/utils/cli/*.h")
+	--add_headerfiles("src/utils/parser/*.hpp")	--hpp加在这儿
+	--if is_os("linux") then
+		--add_headerfiles("src/utils/redis/*.h")
+	--end
+
 	
     -- add files
-	 add_files("src/basetest/*.cpp")
+	add_files("src/basetest/*.cpp")
     add_files("src/datastruct/*.cpp")
 	add_files("src/utils/*.cpp")
 	add_files("src/utils/cli/*.cpp")

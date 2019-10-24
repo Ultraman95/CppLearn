@@ -3,7 +3,9 @@
 #include "platform.h"
 #include "BigDigit.h"
 #include "BaseUtils.h"
+#ifdef linux
 #include "HiredisUtil.h"
+#endif
 #include "gtest/gtest.h"
 
 void test();
