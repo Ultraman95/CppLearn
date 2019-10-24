@@ -6,11 +6,17 @@ set_languages("cxx11")
 
 add_requires("vcpkg::gtest","vcpkg::cli11")
 
+-- lua语言测试
+function testLua()
+	print("TestLua")
+end
+
 -- add_defines("")
 
 -- add target
 target("Base")
 
+	--testLua()
     -- set kind
     set_kind("binary")
 	
@@ -51,6 +57,8 @@ target("Base")
     before_run(function (target)
         os.addenv("PATH", "./dlls")
     end)
+
+
 
 
 
