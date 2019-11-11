@@ -48,6 +48,9 @@ void getSecIndexMin(unsigned long long timeSec,minIndex &mIndex);
 void csleep(int milliseconds);
 
 
+long stringTimeToUnixTime(const char* tradingday, const char* updatetime);
+
+
 
 
 

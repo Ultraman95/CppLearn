@@ -68,6 +68,46 @@ void csleep(int milliseconds) {
 #endif
 }
 
+long stringTimeToUnixTime(const char* tradingday, const char* updatetime)
+{
+	if (tradingday == NULL || updatetime == NULL)
+	{
+		return 0;
+	}
+	struct tm tm;
+	memset(&tm, 0, sizeof(tm));
+	char cyear[5] = { "0" };
+	char cmonth[3] = { "0" };
+	char cday[3] = { "0" };
+	char chour[3] = { "0" };
+	char cmin[3] = { "0" };
+	char csecd[3] = { "0" };
+
+	if (strlen(tradingday) >= 8)
+	{
+		strncpy(cyear, tradingday, 4);
+		strncpy(cmonth, tradingday + 4, 2);
+		strncpy(cday, tradingday + 6, 2);
+	}
+
+	if (strlen(updatetime) >= 6)
+	{
+		strncpy(chour, updatetime, 2);
+		strncpy(cmin, updatetime + 3, 2);
+		strncpy(csecd, updatetime + 6, 2);
+	}
+
+	tm.tm_year = atoi(cyear);
+	tm.tm_year -= 1900;
+	tm.tm_mon = atoi(cmonth);
+	tm.tm_mday = atoi(cday);
+	tm.tm_mon--;
+	tm.tm_hour = atoi(chour);
+	tm.tm_min = atoi(cmin);
+	tm.tm_sec = atoi(csecd);
+	return mktime(&tm);
+}
+
 //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑时间相关↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 

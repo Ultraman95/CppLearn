@@ -24,6 +24,7 @@ target("Base")
 
 	add_includedirs("src/basetest/")
 	add_includedirs("src/datastruct/")
+	add_includedirs("src/memdatabase/")
 	add_includedirs("src/platform/")
 	add_includedirs("src/utils/")
 	add_includedirs("src/utils/cli/")
@@ -35,6 +36,7 @@ target("Base")
     -- add files
 	add_files("src/basetest/*.cpp")
     add_files("src/datastruct/*.cpp")
+	add_files("src/memdatabase/*.cpp")
 	add_files("src/utils/*.cpp")
 	add_files("src/utils/cli/*.cpp")
 	if is_os("linux") then

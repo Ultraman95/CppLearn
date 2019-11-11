@@ -69,6 +69,20 @@ void testIoPut()
 	}
 }
 
+void googleTest(int argc, char **argv)
+{
+	//GoogleTest
+	testing::InitGoogleTest(&argc, argv);
+	RUN_ALL_TESTS();
+}
+
+/*void testAbsl(){
+	string s1;
+	int i = 255;
+	s1 = absl::StrCat("hello 0x",absl::Hex(i));
+	cout << s1 << endl;
+}*/
+
 #ifdef _WIN64
 void testDeltaUs()
 {
@@ -106,9 +120,90 @@ void testRedis()
 }
 #endif
 
-void googleTest(int argc, char **argv)
-{
-	//GoogleTest
-	testing::InitGoogleTest(&argc, argv);
-	RUN_ALL_TESTS();
+
+void testConst(){
+	const char *p0 = "p0";	//指针p指向的内容是常量，不可改变
+	char* const p1 = "p1";	//指针本身是一个常量，不可改变
+	const char* const p2 = "p2";	//指针本身和指向的内容都是常量，都不可以改变
+
+	{
+		const int a = 9;
+		int* b = (int*)&a;	//&a，给a标识符分配空间了，并用b指向了该空间，
+							//可以通过*b访问这个地址，但是不能通过a来访问
+		*b = 3;
+		cout << a << "------" << *b << endl;
+		cout << &a << "------" << b << endl;
+	}
+
+	{
+		int a = 8;
+		int b = 7;
+		const int* c = &a;
+		//*c = 7;	//Error
+		a = 10;
+		cout << a << "------" << *c << endl;
+		c = &b;
+		cout << *c << endl;
+	}
+
+	{
+		int a = 2;
+		int b = 3;
+		int* const c = &a;
+		*c = 4;
+		//c = &b;	//Error
+		cout << a << endl;
+	}
+
+	//const用法
+	//1.定义常量
+	//2.作为参数传递，保持不可变性
+	//3.成员函数后面，表明此函数不会修改任何成员变量，同时也不会调用任何非const函数
 }
+
+
+void testClass() {
+	int age = 23;
+	Child* shilf = new Child("shilf","china","female", age);
+
+
+	//Parent* x = new Child();
+}
+
+void testAllocator() {
+	long n = 1;
+	/*
+	allocator<string> alloc;
+	auto const p = alloc.allocate(n);
+	auto q = p;
+	for (int i = 0; i < n; i++)
+	{
+		alloc.construct(q++, "zz");
+	}
+
+	while (q != p) {
+		alloc.destroy(--q);
+	}
+	alloc.deallocate(p, n);
+	cout << "destroy done !" << endl;
+	
+	//alloc.construct(q++); //空字符串
+	//alloc.construct(q++, 10, 'c');
+	//cout << *p << endl;
+	//cout << p[0] << endl;
+	*/
+	
+	allocator<Child> calloc;
+	auto const p1 = calloc.allocate(n);
+	auto q1 = p1;
+	int age = 23;
+	Child x{ "shilf", "china", "female", age };
+	calloc.construct(q1++, x);
+	while (q1 != p1) {
+		calloc.destroy(--q1);
+	}
+	calloc.deallocate(p1, n);
+	cout << "destroy done !" << endl;
+	
+}
+

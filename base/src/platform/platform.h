@@ -14,8 +14,13 @@
 #include <string>
 #include "stdio.h"
 #include <cmath>
+#include <climits>
+#include <memory>
+#include <vector>
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
+using std::allocator;
+using std::vector;
