@@ -25,9 +25,9 @@ TEST(FooTest, HandleNoneZeroInput)
 
 TEST(IsAbsTest, HandlerTrueReturn)
 {
-	ASSERT_FALSE(Abs(1) == 1) << "Abs(1)=1"; //ASSERT_TRUEæœŸå¾…ç»“æžœæ˜¯true,operator<<è¾“å‡ºä¸€äº›è‡ªå®šä¹‰çš„ä¿¡æ¯
+	ASSERT_FALSE(Abs(1) == 1) << "Abs(1)=1"; //ASSERT_TRUEÆÚ´ý½á¹ûÊÇtrue,operator<<Êä³öÒ»Ð©×Ô¶¨ÒåµÄÐÅÏ¢
 	ASSERT_TRUE(Abs(-1) == 1) << "Abs(-1)=1";
-	ASSERT_FALSE(Abs(-2) == -2); //æœŸå¾…ç»“æžœæ˜¯false
+	ASSERT_FALSE(Abs(-2) == -2); //ÆÚ´ý½á¹ûÊÇfalse
 	ASSERT_EQ(Abs(1), Abs(-1));
 	ASSERT_NE(Abs(-1), 0);
 	ASSERT_LT(Abs(-1), 2);
@@ -37,11 +37,11 @@ TEST(IsAbsTest, HandlerTrueReturn)
 }
 
 /**
- * RAIIèµ„æºé‡Šæ”¾
+ * RAII×ÊÔ´ÊÍ·Å
  */
 void testRAII()
 {
-	CFloat *x = new CFloat("2.33333");
+	CFloat* x = new CFloat("2.33333");
 	RAIIWrapper<CFloat> cf(x);
 }
 
@@ -57,7 +57,7 @@ void testIoPut()
 			a[0] = 'a';
 			a[1] = 'b';
 			a[2] = '\0';
-			char *b = "ab";
+			char* b = "ab";
 			printf("a is %s , b is %s\n", a, b);
 			printf("c++ string is \n", cpStr.c_str());
 			cout << inputStr << endl;
@@ -69,19 +69,13 @@ void testIoPut()
 	}
 }
 
-void googleTest(int argc, char **argv)
+void googleTest(int argc, char** argv)
 {
 	//GoogleTest
 	testing::InitGoogleTest(&argc, argv);
 	RUN_ALL_TESTS();
 }
 
-/*void testAbsl(){
-	string s1;
-	int i = 255;
-	s1 = absl::StrCat("hello 0x",absl::Hex(i));
-	cout << s1 << endl;
-}*/
 
 #ifdef _WIN64
 void testDeltaUs()
@@ -98,8 +92,8 @@ void testDeltaUs()
 #ifdef linux
 void testRedis()
 {
-	CRedisConn *redisConn = new CRedisConn("127.0.0.1", 6380, "123456", 0);
-	struct timeval tv = {1, 0};
+	CRedisConn* redisConn = new CRedisConn("127.0.0.1", 6380, "123456", 0);
+	struct timeval tv = { 1, 0 };
 	vector<string> cmdVc;
 	for (int i = 0; i < 50000; i++)
 	{
@@ -121,15 +115,15 @@ void testRedis()
 #endif
 
 
-void testConst(){
-	const char *p0 = "p0";	//æŒ‡é’ˆpæŒ‡å‘çš„å†…å®¹æ˜¯å¸¸é‡ï¼Œä¸å¯æ”¹å˜
-	char* const p1 = "p1";	//æŒ‡é’ˆæœ¬èº«æ˜¯ä¸€ä¸ªå¸¸é‡ï¼Œä¸å¯æ”¹å˜
-	const char* const p2 = "p2";	//æŒ‡é’ˆæœ¬èº«å’ŒæŒ‡å‘çš„å†…å®¹éƒ½æ˜¯å¸¸é‡ï¼Œéƒ½ä¸å¯ä»¥æ”¹å˜
+void testConst() {
+	const char* p0 = "p0";	//Ö¸ÕëpÖ¸ÏòµÄÄÚÈÝÊÇ³£Á¿£¬²»¿É¸Ä±ä
+	char* const p1 = "p1";	//Ö¸Õë±¾ÉíÊÇÒ»¸ö³£Á¿£¬²»¿É¸Ä±ä
+	const char* const p2 = "p2";	//Ö¸Õë±¾ÉíºÍÖ¸ÏòµÄÄÚÈÝ¶¼ÊÇ³£Á¿£¬¶¼²»¿ÉÒÔ¸Ä±ä
 
 	{
 		const int a = 9;
-		int* b = (int*)&a;	//&aï¼Œç»™aæ ‡è¯†ç¬¦åˆ†é…ç©ºé—´äº†ï¼Œå¹¶ç”¨bæŒ‡å‘äº†è¯¥ç©ºé—´ï¼Œ
-							//å¯ä»¥é€šè¿‡*bè®¿é—®è¿™ä¸ªåœ°å€ï¼Œä½†æ˜¯ä¸èƒ½é€šè¿‡aæ¥è®¿é—®
+		int* b = (int*)&a;	//&a£¬¸øa±êÊ¶·û·ÖÅä¿Õ¼äÁË£¬²¢ÓÃbÖ¸ÏòÁË¸Ã¿Õ¼ä£¬
+							//¿ÉÒÔÍ¨¹ý*b·ÃÎÊÕâ¸öµØÖ·£¬µ«ÊÇ²»ÄÜÍ¨¹ýaÀ´·ÃÎÊ
 		*b = 3;
 		cout << a << "------" << *b << endl;
 		cout << &a << "------" << b << endl;
@@ -155,23 +149,21 @@ void testConst(){
 		cout << a << endl;
 	}
 
-	//constç”¨æ³•
-	//1.å®šä¹‰å¸¸é‡
-	//2.ä½œä¸ºå‚æ•°ä¼ é€’ï¼Œä¿æŒä¸å¯å˜æ€§
-	//3.æˆå‘˜å‡½æ•°åŽé¢ï¼Œè¡¨æ˜Žæ­¤å‡½æ•°ä¸ä¼šä¿®æ”¹ä»»ä½•æˆå‘˜å˜é‡ï¼ŒåŒæ—¶ä¹Ÿä¸ä¼šè°ƒç”¨ä»»ä½•éžconstå‡½æ•°
+	//constÓÃ·¨
+	//1.¶¨Òå³£Á¿
+	//2.×÷Îª²ÎÊý´«µÝ£¬±£³Ö²»¿É±äÐÔ
+	//3.³ÉÔ±º¯ÊýºóÃæ£¬±íÃ÷´Ëº¯Êý²»»áÐÞ¸ÄÈÎºÎ³ÉÔ±±äÁ¿£¬Í¬Ê±Ò²²»»áµ÷ÓÃÈÎºÎ·Çconstº¯Êý
 }
 
 
 void testClass() {
 	int age = 23;
-	Child* shilf = new Child("shilf","china","female", age);
-
-
-	//Parent* x = new Child();
+	Child* shilf = new Child("shilf", "china", "female", age);
+	Teacher* ta = new Teacher();
 }
 
 void testAllocator() {
-	long n = 1;
+	long n{ 1 };
 	/*
 	allocator<string> alloc;
 	auto const p = alloc.allocate(n);
@@ -186,13 +178,12 @@ void testAllocator() {
 	}
 	alloc.deallocate(p, n);
 	cout << "destroy done !" << endl;
-	
-	//alloc.construct(q++); //ç©ºå­—ç¬¦ä¸²
+
+	//alloc.construct(q++); //¿Õ×Ö·û´®
 	//alloc.construct(q++, 10, 'c');
 	//cout << *p << endl;
 	//cout << p[0] << endl;
 	*/
-	
 	allocator<Child> calloc;
 	auto const p1 = calloc.allocate(n);
 	auto q1 = p1;
@@ -204,6 +195,6 @@ void testAllocator() {
 	}
 	calloc.deallocate(p1, n);
 	cout << "destroy done !" << endl;
-	
+
 }
 

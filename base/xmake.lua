@@ -4,7 +4,7 @@ set_project("Base")
 add_rules("mode.debug", "mode.release")
 set_languages("cxx11")
 
-add_requires("vcpkg::gtest","vcpkg::cli11")
+add_requires("vcpkg::gtest","vcpkg::cli11", {configs = {vs_runtime = "MD"}})  --如果不加后面的配置，将自动安装windows-static的库
 
 -- lua语言测试
 function testLua()

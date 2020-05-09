@@ -1,61 +1,61 @@
 #include "BaseUtils.h"
 
-//â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“æ—¶é—´ç›¸å…³â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“
+//¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ýÊ±¼äÏà¹Ø¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý
 
 unsigned long long getCurrentMilliTime()
 {
 #ifdef _WIN64
-    struct timeval tv;
-    time_t clock;
-    struct tm tm;
-    SYSTEMTIME wtm;
-    GetLocalTime(&wtm);
-    tm.tm_year = wtm.wYear - 1900;
-    tm.tm_mon = wtm.wMonth - 1;
-    tm.tm_mday = wtm.wDay;
-    tm.tm_hour = wtm.wHour;
-    tm.tm_min = wtm.wMinute;
-    tm.tm_sec = wtm.wSecond;
-    tm.tm_isdst = -1;
-    clock = mktime(&tm);
-    tv.tv_sec = clock;
-    tv.tv_usec = wtm.wMilliseconds * 1000;
-    return ((unsigned long long)tv.tv_sec * 1000 + (unsigned long long)tv.tv_usec / 1000);
+	struct timeval tv;
+	time_t clock;
+	struct tm tm;
+	SYSTEMTIME wtm;
+	GetLocalTime(&wtm);
+	tm.tm_year = wtm.wYear - 1900;
+	tm.tm_mon = wtm.wMonth - 1;
+	tm.tm_mday = wtm.wDay;
+	tm.tm_hour = wtm.wHour;
+	tm.tm_min = wtm.wMinute;
+	tm.tm_sec = wtm.wSecond;
+	tm.tm_isdst = -1;
+	clock = mktime(&tm);
+	tv.tv_sec = clock;
+	tv.tv_usec = wtm.wMilliseconds * 1000;
+	return ((unsigned long long)tv.tv_sec * 1000 + (unsigned long long)tv.tv_usec / 1000);
 #else
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    return ((unsigned long long)tv.tv_sec * 1000 + (unsigned long long)tv.tv_usec / 1000);
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	return ((unsigned long long)tv.tv_sec * 1000 + (unsigned long long)tv.tv_usec / 1000);
 #endif
 }
 
 
-void getSecIndexMin(unsigned long long timeSec,minIndex &mIndex) {
-    time_t tick = (time_t)timeSec;
-    struct tm *tx;
-    tx = localtime(&tick);
+void getSecIndexMin(unsigned long long timeSec, minIndex& mIndex) {
+	time_t tick = (time_t)timeSec;
+	struct tm* tx;
+	tx = localtime(&tick);
 
-    char dayStr[100] = { 0 };
-    strftime(dayStr, 100, "%Y-%m-%d", tx);
-    int minute = tx->tm_min;
-    int hour = tx->tm_hour;
-    int index = hour * 60 + minute;
+	char dayStr[100] = { 0 };
+	strftime(dayStr, 100, "%Y-%m-%d", tx);
+	int minute = tx->tm_min;
+	int hour = tx->tm_hour;
+	int index = hour * 60 + minute;
 	mIndex.day = dayStr;
 	mIndex.index = index;
 }
 
 #ifdef _WIN64
-double getStartMicroTime(LARGE_INTEGER &cpuFreq){
-    LARGE_INTEGER startTime;
-    double rumTime=0.0;
-    QueryPerformanceFrequency(&cpuFreq);
-    QueryPerformanceCounter(&startTime);
-    return startTime.QuadPart;
+double getStartMicroTime(LARGE_INTEGER& cpuFreq) {
+	LARGE_INTEGER startTime;
+	double rumTime = 0.0;
+	QueryPerformanceFrequency(&cpuFreq);
+	QueryPerformanceCounter(&startTime);
+	return startTime.QuadPart;
 }
 
-double getEndMicroTime(){
-    LARGE_INTEGER endTime;
-    QueryPerformanceCounter(&endTime);
-    return endTime.QuadPart;
+double getEndMicroTime() {
+	LARGE_INTEGER endTime;
+	QueryPerformanceCounter(&endTime);
+	return endTime.QuadPart;
 }
 #endif
 
@@ -108,34 +108,34 @@ long stringTimeToUnixTime(const char* tradingday, const char* updatetime)
 	return mktime(&tm);
 }
 
-//â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘æ—¶é—´ç›¸å…³â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘
+//¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡üÊ±¼äÏà¹Ø¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü
 
 
 
-//â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“Stringç›¸å…³â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“
+//¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ýStringÏà¹Ø¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý
 
 
 string intToString(int v)
 {
-    char buf[32] = {0};
-    snprintf(buf, sizeof(buf), "%u", v);
-    string str = buf;
-    return str;
+	char buf[32] = { 0 };
+	snprintf(buf, sizeof(buf), "%u", v);
+	string str = buf;
+	return str;
 }
 
 
-//â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘Stringç›¸å…³â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘
+//¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡üStringÏà¹Ø¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü
 
 
-//â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“ä¸€èˆ¬ç›¸å…³â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“â†“
+//¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ýÒ»°ãÏà¹Ø¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý¡ý
 
 void printCV() {
 #ifdef _MSC_VER
 	cout << "Window MSC_VER :" << _MSC_VER << endl;
 #else
-    cout << "Linux Gcc" << endl;
+	cout << "Linux Gcc" << endl;
 #endif
 }
 
 
-//â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘ä¸€èˆ¬ç›¸å…³â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘â†‘
+//¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡üÒ»°ãÏà¹Ø¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü¡ü

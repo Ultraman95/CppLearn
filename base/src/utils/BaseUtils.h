@@ -3,7 +3,7 @@
 #include "platform.h"
 
 
-//---------------RAIIç›¸å…³-------------
+//---------------RAIIÏà¹Ø-------------
 
 template<class T>
 class RAIIWrapper
@@ -24,27 +24,27 @@ private:
 };
 
 
-//---------------æ—¶é—´ç›¸å…³-------------
+//---------------Ê±¼äÏà¹Ø-------------
 
 struct minIndex {
-    string day;
-    int index;
+	string day;
+	int index;
 };
 
-//è·å–å½“å‰æ—¶é—´çš„æ¯«ç§’æ•°ï¼Œå¯ä»¥ç”¨æ¥ç®—æ¯«ç§’å·®
+//»ñÈ¡µ±Ç°Ê±¼äµÄºÁÃëÊı£¬¿ÉÒÔÓÃÀ´ËãºÁÃë²î
 unsigned long long getCurrentMilliTime();
 
-//è·å–å¾®ç§’å·®
+//»ñÈ¡Î¢Ãë²î
 
 #ifdef _WIN64
-double getStartMicroTime(LARGE_INTEGER &cpuFreq);
+double getStartMicroTime(LARGE_INTEGER& cpuFreq);
 double getEndMicroTime();
 #endif
 
-//å•ä½æ˜¯ç§’ï¼Œè®¡ç®—è¿™ä¸€ç§’åœ¨ä¸€å¤©çš„å“ªä¸€åˆ†é’Ÿé‡Œ
-void getSecIndexMin(unsigned long long timeSec,minIndex &mIndex);
+//µ¥Î»ÊÇÃë£¬¼ÆËãÕâÒ»ÃëÔÚÒ»ÌìµÄÄÄÒ»·ÖÖÓÀï
+void getSecIndexMin(unsigned long long timeSec, minIndex& mIndex);
 
-//å•ä½æ˜¯æ¯«ç§’
+//µ¥Î»ÊÇºÁÃë
 void csleep(int milliseconds);
 
 
@@ -54,15 +54,15 @@ long stringTimeToUnixTime(const char* tradingday, const char* updatetime);
 
 
 
-//---------------Stringç›¸å…³-------------
+//---------------StringÏà¹Ø-------------
 
 string intToString(int v);
 
 
 
-//---------------ä¸€èˆ¬ç›¸å…³-------------
+//---------------Ò»°ãÏà¹Ø-------------
 
-//æ‰“å°ç¼–è¯‘å™¨çš„ç‰ˆæœ¬
+//´òÓ¡±àÒëÆ÷µÄ°æ±¾
 void printCV();
 
 

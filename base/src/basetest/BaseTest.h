@@ -7,13 +7,11 @@
 #include "HiredisUtil.h"
 #endif
 #include "gtest/gtest.h"
-#include "absl/strings/str_cat.h"
 #include "Child.h"
 
 void test();
 void testRAII();
 void testIoPut();
-//void testAbsl();
 void testConst();
 void googleTest(int argc, char** argv);
 
